@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Outlet } from 'react-router-dom';
-import SideMenu from './SideMenu';
-import { MenuBtn } from './MenuBtn';
+import SideMenu from '../menu/SideMenu';
+import { MenuBtn } from '../button/MenuBtn';
 import styled from 'styled-components';
 
 const Overlay = styled.div`

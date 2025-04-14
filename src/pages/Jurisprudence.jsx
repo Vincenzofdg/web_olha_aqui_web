@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { getAllLaw } from '../../service/actions/laws';
-import theme from '../../../theme';
-import { JurisprudenceCard } from '../../components/cards/JurisprudenceCard';
-import str from '../../localized/languages/ptBr';
-import GoBackButton from '../../components/button/GoBackButton';
+import { getAllLaw } from '../service/actions/laws';
+import theme from '../../theme';
+import { JurisprudenceCard } from '../components/cards/JurisprudenceCard';
+import str from '../localized/languages/ptBr';
+import GoBackButton from '../components/button/GoBackButton';
 
 const Wrapper = styled.div`
   max-width: 900px;
@@ -45,7 +45,7 @@ function Jurisprudence() {
 
   return (
     <Wrapper>
-      <GoBackButton/>
+      
       <Title>{str.titlePages.Jurisprudence.Title}</Title>
       <Subtitle>{str.titlePages.Jurisprudence.SubTitle}</Subtitle>
       {laws.length === 0 ? (

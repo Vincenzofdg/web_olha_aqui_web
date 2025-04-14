@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import str from '../localized/languages/ptBr';
+import str from '../../localized/languages/ptBr';
 
 const Button = styled.button`
   border-radius: 8px;

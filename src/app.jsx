@@ -5,12 +5,14 @@ import GlobalStyle from './styles/globalStyles';
 
 import Welcome from './pages/Welcome/Welcome';
 import Home from './pages/Home';
-import NewsDetail from './pages/Detail/NewsDetail';
-import Ads from './pages/Ads/Ads';
-import Jurisprudence from './pages/Jurisprudence/Jurisprudence';
-import Contact from './pages/Contact/Contact';
-import News from './pages/News/news';
-import JurisprudenceDetails from './components/JurisprudenceDetails';
+import NewsDetail from './pages/Destination/NewsDetail';
+import Ads from './pages/Ads';
+import Jurisprudence from './pages/Jurisprudence';
+import Contact from './pages/Contact';
+import News from './pages/news';
+import MenuLayout from './components/menu/MenuLayout';
+import AdDetails from './pages/Destination/AdDetails';
+
 
 function App() {
   return (
@@ -18,13 +20,16 @@ function App() {
       <GlobalStyle />
       <Routes>
         <Route path="/" element={<Welcome />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/anuncios" element={<Ads />} />
-        <Route path="/jurisprudencia" element={<Jurisprudence />} />
-        <Route path="/jurisprudencia/:id" element={<JurisprudenceDetails />} />
-        <Route path="/noticias" element={<News />} />
-        <Route path="/contato" element={<Contact />} />
-        <Route path="/news/:id" element={<NewsDetail />} />
+
+        <Route element={<MenuLayout />}>
+          <Route path="/home" element={<Home />} />
+          <Route path="/anuncios" element={<Ads />} />
+          <Route path="/anuncio/:id" element={<AdDetails />} />
+          <Route path="/jurisprudencia" element={<Jurisprudence />} />
+          <Route path="/noticias" element={<News />} />
+          <Route path="/contato" element={<Contact />} />
+          <Route path="/news/:id" element={<NewsDetail />} />
+        </Route>
       </Routes>
     </ThemeProvider>
   );

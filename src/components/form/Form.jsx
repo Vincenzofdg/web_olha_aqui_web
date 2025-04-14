@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import str from '../localized/languages/ptBr';
-import { TextForm } from '../components/TextForm';
-import { SendBtn } from '../components/SendBtn';
-import { contactForm } from '../tools/validateForms';
-import { submitMessage } from '../service/actions/messages';
-import theme from '../../theme';
+import str from '../../localized/languages/ptBr';
+import { contactForm } from '../../tools/validateForms';
+import { submitMessage } from '../../service/actions/messages';
+import theme from '../../../theme';
+import { TextForm } from './TextForm';
+import { SendBtn } from '../button/SendBtn';
 
 const Container = styled.div`
   width: 100%;

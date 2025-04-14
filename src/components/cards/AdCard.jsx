@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import str from '../../localized/languages/ptBr';
-import { shortDateDayFormat } from '../../tools';
+import { shortDateDayFormat } from '../../tools/date';
+import { useNavigate } from 'react-router-dom';
 
 const Card = styled.div`
   width: 90%;
@@ -45,7 +46,11 @@ const TagsText = styled.span`
 `;
 
 function AdCard({ data, nav }) {
-  const handleClick = () => nav('Ad', data);
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/anuncio/${data.id}`, { state: data });
+  };
 
   const imageUrl = data.image?.startsWith('http') ? data.image : `${str.website}${data.image}`;
 

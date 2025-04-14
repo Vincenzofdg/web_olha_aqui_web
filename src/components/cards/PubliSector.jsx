@@ -1,9 +1,9 @@
 import styled from 'styled-components';
-import condominioIcon from '../assets/building.png';
-import moradoresIcon from '../assets/people.png';
-import { usePublicSector } from '../hooks/usePublicSector';
-import theme from '../../theme';
-import str from '../localized/languages/ptBr';
+import condominioIcon from '../../assets/building.png';
+import moradoresIcon from '../../assets/people.png';
+import { usePublicSector } from '../../hooks/usePublicSector';
+import theme from '../../../theme';
+import str from '../../localized/languages/ptBr';
 
 const Section = styled.div`
   width: 100vw;

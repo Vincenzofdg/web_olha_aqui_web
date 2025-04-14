@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import str from '../localized/languages/ptBr';
+import str from '../../localized/languages/ptBr';
 
 const MenuWrapper = styled.div`
   position: fixed;

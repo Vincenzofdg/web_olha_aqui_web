@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import NewsCard from '../../components/cards/NewsCard';
+import NewsCard from '../components/cards/NewsCard';
 import { useNavigate } from 'react-router-dom';
-import { getAllNews } from '../../service/actions/news'; 
-import str from '../../localized/languages/ptBr';
-import GoBackButton from '../../components/button/GoBackButton';
+import { getAllNews } from '../service/actions/news'; 
+import str from '../localized/languages/ptBr';
+import GoBackButton from '../components/button/GoBackButton';
 
 
 const Container = styled.div`

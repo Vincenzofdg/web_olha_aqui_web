@@ -1,16 +1,17 @@
-import { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export const usePublicSector = () => {
   const navigate = useNavigate();
 
-  const handleSelect = useCallback((option) => {
-    if (option === 'condominio') {
-      navigate('/anuncios?categoria=condominio');
-    } else if (option === 'moradores') {
-      navigate('/anuncios?categoria=moradores');
-    }
-  }, [navigate]);
+  const sectorMap = {
+    condominio: 'condominium',
+    moradores: 'resident'
+  };
+
+  const handleSelect = (sector) => {
+    const backendTarget = sectorMap[sector] || 'all';
+    navigate(`/anuncios?target=${backendTarget}`);
+  };
 
   return { handleSelect };
 };

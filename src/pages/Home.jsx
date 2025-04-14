@@ -3,10 +3,9 @@ import NewCard from '../components/cards/NewsCard';
 import { useNavigate } from 'react-router-dom';
 import InfoCard from '../components/cards/InfoCard';
 import PublicCard from '../components/cards/PublicCard';
-import PublicSector from '../components/PubliSector';
+import PublicSector from '../components/cards/PubliSector';
 import { useHomeNews } from '../hooks/useHomeNews';
 import str from '../localized/languages/ptBr';
-import Menu from '../components/MenuLayout';
 
 const Container = styled.div`
   min-height: 100vh;
@@ -51,28 +50,30 @@ function Home() {
   const { highlightedNews } = useHomeNews();
 
   return (
-    <Container>
-      <Menu/>
-      <PublicCard />
-      <InfoCard />
-      <PublicSector />
-
-      {highlightedNews.length > 0 && (
-        <>
-          <Title>{str.titlePages.Home.Title}</Title>
-          <SubTitle>{str.titlePages.Home.SubTitle}</SubTitle>
-          <SubTitle>{str.titlePages.Home.Slide}</SubTitle>
-          <NewsCarousel>
-            {highlightedNews.slice(0, 3).map((item, index) => (
-              <div key={index} style={{ maxWidth: '250px' }}>
-                <NewCard data={item} nav={navigate} />
-              </div>
-            ))}
-          </NewsCarousel>
-        </>
-      )}
-    </Container>
+    <>
+      <Container>
+        <PublicCard />
+        <InfoCard />
+        <PublicSector />
+  
+        {highlightedNews.length > 0 && (
+          <>
+            <Title>{str.titlePages.Home.Title}</Title>
+            <SubTitle>{str.titlePages.Home.SubTitle}</SubTitle>
+            <SubTitle>{str.titlePages.Home.Slide}</SubTitle>
+            <NewsCarousel>
+              {highlightedNews.slice(0, 3).map((item, index) => (
+                <div key={index} style={{ maxWidth: '250px' }}>
+                  <NewCard data={item} nav={navigate} />
+                </div>
+              ))}
+            </NewsCarousel>
+          </>
+        )}
+      </Container>
+    </>
   );
+  
 }
 
 export default Home;

@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import str from '../../localized/languages/ptBr';
 import PredioIcon from '../../assets/PredioIcon.png';
+import str from '../../localized/languages/ptBr';
 
 const Card = styled.div`
   background-color: ${({ theme }) => theme.background[4]};

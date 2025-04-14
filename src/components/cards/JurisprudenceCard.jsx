@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import str from '../../localized/languages/ptBr';
 import theme from '../../../theme';
 import { shortDateDayFormat } from '../../tools/date';
+import str from '../../localized/languages/ptBr';
 
 const CardContainer = styled.div`
   background-color: ${theme.background[4]};
