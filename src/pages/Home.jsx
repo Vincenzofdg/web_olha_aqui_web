@@ -7,16 +7,6 @@ import PublicSector from '../components/cards/PubliSector';
 import { useHomeNews } from '../hooks/useHomeNews';
 import str from '../localized/languages/ptBr';
 
-const Container = styled.div`
-  min-height: 100vh;
-  background-color: ${({ theme }) => theme.background[4]};
-  padding: 16px;
-  overflow-y: auto;
-  max-width: 900px;
-  margin: 0 auto;
-  box-sizing: border-box;
-`;
-
 const NewsCarousel = styled.div`
   display: flex;
   gap: 16px;
@@ -51,11 +41,9 @@ function Home() {
 
   return (
     <>
-      <Container>
         <PublicCard />
         <InfoCard />
         <PublicSector />
-  
         {highlightedNews.length > 0 && (
           <>
             <Title>{str.titlePages.Home.Title}</Title>
@@ -70,10 +58,8 @@ function Home() {
             </NewsCarousel>
           </>
         )}
-      </Container>
     </>
   );
-  
 }
 
 export default Home;

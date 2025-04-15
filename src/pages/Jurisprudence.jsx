@@ -4,7 +4,6 @@ import { getAllLaw } from '../service/actions/laws';
 import theme from '../../theme';
 import { JurisprudenceCard } from '../components/cards/JurisprudenceCard';
 import str from '../localized/languages/ptBr';
-import GoBackButton from '../components/button/GoBackButton';
 
 const Wrapper = styled.div`
   max-width: 900px;

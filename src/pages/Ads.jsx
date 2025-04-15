@@ -5,7 +5,6 @@ import styled from 'styled-components';
 import { getAllAnnounces } from '../service/actions/announces';
 import AdCard from '../components/cards/AdCard';
 import FilterAds from '../components/modal/filterAds';
-import GoBackButton from '../components/button/GoBackButton';
 
 const Header = styled.div`
   display: flex;

@@ -5,17 +5,25 @@ import { usePublicSector } from '../../hooks/usePublicSector';
 import theme from '../../../theme';
 import str from '../../localized/languages/ptBr';
 
-const Section = styled.div`
-  width: 100vw;
+const Section = styled.section`
   position: relative;
   left: 50%;
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
-  background-color: ${theme.background[6]};
+  width: 100vw;
+
+  background-color: #002849;
+  color: white;
   padding: 24px 16px;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 32px;
 `;
+
+
 
 const Title = styled.h2`
   color: ${theme.text[1]};

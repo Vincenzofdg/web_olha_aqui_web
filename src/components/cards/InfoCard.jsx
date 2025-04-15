@@ -38,10 +38,10 @@ const Title = styled.h2`
 `;
 
 const Description = styled.p`
-  font-size: clamp(15px, 2vw, 14px);
+  width: 80%;
+  font-size: clamp(14px, 6vw, 17px);
   line-height: 1.4;
   padding-left: 3px;
-  margin: 8px 0;
   color: ${({ theme }) => theme.text[2]};
   z-index: 2;
 `;

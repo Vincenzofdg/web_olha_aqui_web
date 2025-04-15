@@ -4,7 +4,6 @@ import NewsCard from '../components/cards/NewsCard';
 import { useNavigate } from 'react-router-dom';
 import { getAllNews } from '../service/actions/news'; 
 import str from '../localized/languages/ptBr';
-import GoBackButton from '../components/button/GoBackButton';
 
 
 const Container = styled.div`
@@ -48,7 +47,6 @@ const News = () => {
 
   return (
     <Container>
-      <GoBackButton/>
       <Title>{str.titlePages.News.Title}</Title>
       <Subtitle>{str.titlePages.News.SubTitle}</Subtitle>
       <Grid>
