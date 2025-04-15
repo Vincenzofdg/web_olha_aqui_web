@@ -1,109 +1,99 @@
-import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import PredioIcon from '../../assets/PredioIcon.png';
 import str from '../../localized/languages/ptBr';
+import { useNavigate } from 'react-router-dom';
 
-const Card = styled.div`
+const Container = styled.div`
   background-color: ${({ theme }) => theme.background[4]};
-  border-radius: 16px;
+  width: 100%;
+  max-width: 400px;
+  height: 260px;
+  border-radius: 15px;
+  margin: 20px auto;
+  position: relative;
   overflow: hidden;
-  margin: 16px 0;
   display: flex;
-  flex-direction: column;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  flex-direction: row;
+  padding: 8px;
+  box-shadow: -2px 2px 12px rgba(0, 0, 0, 0.2);
 
-  @media(min-width: 600px) {
-    flex-direction: row;
+  @media (max-width: 350px) {
+    height: 220px;
   }
 `;
 
-const CardContainer = styled.div`
-  width: 100%;
-  max-width: 600px;
-  margin: 0 auto;
-  margin-bottom: 16px;
-  padding: 16px;
-
-  @media (max-width: 768px) {
-    padding: 12px;
-  }
-`;
-
-const ImageContainer = styled.div`
-  width: 100%;
-  height: 140px;
-  flex-shrink: 0;
-  background-image: url(${props => props.$img});
-  background-size: cover;
-  background-position: center;
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
-
-  @media(min-width: 600px) {
-    width: 50%;
-    height: auto;
-    border-radius: 0;
-  }
-`;
-
-const Content = styled.div`
-  padding: 12px 16px;
-  flex: 1;
+const TextContainer = styled.div`
+  flex: 2;
+  padding: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 `;
 
 const Title = styled.h2`
+  font-size: clamp(15px, 2vw, 17px);
+  font-weight: bold;
   color: ${({ theme }) => theme.text[2]};
-  font-size: 16px;
-  font-weight: 800;
-  margin-bottom: 6px;
+  margin: 0;
 `;
 
 const Description = styled.p`
-  color: ${({ theme }) => theme.text[2]};
-  font-size: 13px;
+  font-size: clamp(15px, 2vw, 14px);
   line-height: 1.4;
-  flex: 1;
+  padding-left: 3px;
+  margin: 8px 0;
+  color: ${({ theme }) => theme.text[2]};
+  z-index: 2;
 `;
 
 const Button = styled.button`
-  background-color: ${({ theme }) => theme.background[2]};
+  background-color: ${({ theme }) => theme.background[5]};
   color: ${({ theme }) => theme.text[1]};
-  border: none;
-  padding: 10px 16px;
+  padding: 8px 16px;
   border-radius: 8px;
   font-weight: bold;
-  margin-top: 16px;
+  font-size: 13px;
+  border: none;
   cursor: pointer;
   align-self: flex-start;
 
-  @media(max-width: 600px) {
-    width: 100%;
-    text-align: center;
+  &:hover {
+    opacity: 0.9;
   }
 `;
 
-const InfoCard = () => {
+const Image = styled.img`
+  position: absolute;
+  width: 53%;
+  height: auto;
+  right: -40px;
+  bottom: -20px;
+  opacity: 0.8;
+
+  @media (max-width: 350px) {
+    right: -18px;
+    bottom: -10px;
+  }
+`;
+
+const PublicAnnounce = () => {
   const navigate = useNavigate();
 
-  const handleClick = () => {
+  const openBrowser = () => {
+
     navigate('/contato');
   };
 
   return (
-    <CardContainer>
-      <Card>
-        <ImageContainer $img={PredioIcon} />
-        <Content>
-          <Title>{str.info.title}</Title>
-          <Description>{str.info.content}</Description>
-          <Button onClick={handleClick}>{str.info.btn}</Button>
-        </Content>
-      </Card>
-    </CardContainer>
+    <Container>
+      <TextContainer>
+        <Title>{str.info.title}</Title>
+        <Description>{str.info.content}</Description>
+        <Button onClick={openBrowser}>{str.info.btn}</Button>
+      </TextContainer>
+      <Image src={PredioIcon} alt="Ícone prédio" />
+    </Container>
   );
 };
 
-export default InfoCard;
+export default PublicAnnounce;
