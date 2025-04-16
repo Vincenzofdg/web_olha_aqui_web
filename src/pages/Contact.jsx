@@ -18,6 +18,7 @@ const SectionTitle = styled.h2`
   font-size: 16px;
   font-weight: bold;
   color: ${({ theme }) => theme.text[2]};
+  margin-top: 40px;
   margin-bottom: 16px;
 `;
 

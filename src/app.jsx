@@ -3,7 +3,7 @@ import { ThemeProvider } from 'styled-components';
 import theme from '../theme';
 import GlobalStyle from './styles/globalStyles';
 
-import Welcome from './pages/Welcome/Welcome';
+import Welcome from './pages/Welcome';
 import Home from './pages/Home';
 import NewsDetail from './pages/Destination/NewsDetail';
 import Ads from './pages/Ads';

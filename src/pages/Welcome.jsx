@@ -1,16 +1,14 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-
-import logo from '../../assets/logo.png';
-
+import logo from '../assets/logo.png';
 import styled from 'styled-components';
-import bgImage from '../../assets/1.png';
+import bgImage from '../assets/1.png';
 
 const Container = styled.div`
   background: url(${bgImage}) no-repeat center center;
   background-size: cover;
   height: 100vh;
-  max-width: 430px; /* Largura típica de celular (como iPhone 14) */
+  max-width: 430px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
