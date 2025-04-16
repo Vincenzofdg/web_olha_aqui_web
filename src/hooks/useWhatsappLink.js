@@ -6,21 +6,25 @@ export const useWhatsappLink = () => {
 
   useEffect(() => {
     const fetchContact = async () => {
-      const contacts = await getAllContacts();
-      if (contacts && contacts.length > 0) {
-        const phone = contacts[0]?.whatsapp || contacts[0]?.phone;
-        if (phone) {
-          const formatted = phone.replace(/[^\d]/g, '');
+      try {
+        const contact = await getAllContacts();
+  
+        const rawPhone = contact?.whatsapp || contact?.phone;
+  
+        if (rawPhone) {
+          const formatted = rawPhone.replace(/[^\d]/g, '');
           const message = encodeURIComponent("Olá! Gostaria de anunciar no app.");
-          setWhatsappLink(`https://wa.me/${formatted}?text=${message}`);
-
-          console.log('WhatsApp cleaned number:', formatted);
+          const link = `https://wa.me/${formatted}?text=${message}`;
+          setWhatsappLink(link);
         }
+      } catch (e) {
+        console.error('Erro ao buscar contatos:', e);
       }
     };
-
+  
     fetchContact();
   }, []);
+  
 
   return whatsappLink;
 };

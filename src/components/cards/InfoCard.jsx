@@ -79,11 +79,16 @@ const Image = styled.img`
 const PublicAnnounce = () => {
   const whatsappLink = useWhatsappLink(); 
   const openWhatsapp = () => {
+    console.log('Botão clicado');
     if (whatsappLink) {
-      console.log('Abrindo WhatsApp:', whatsappLink);
+      console.log('Abrindo WhatsApp com link:', whatsappLink);
       window.open(whatsappLink, '_blank');
+    } else {
+      console.log('Link ainda não carregado.');
     }
   };
+  
+  
 
   return (
     <Container>
