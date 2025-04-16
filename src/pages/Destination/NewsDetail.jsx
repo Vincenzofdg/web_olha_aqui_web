@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
-import { getAllNews } from '../../service/actions/news'; 
 import styled from 'styled-components';
+import useNewsDetail from '../../hooks/useNewsDetail';
 
 const Container = styled.div`
   max-width: 900px;
@@ -26,21 +26,13 @@ const PDFContainer = styled.div`
 
 const NewsDetail = () => {
   const { id } = useParams();
-  const [news, setNews] = useState(null);
-
-  useEffect(() => {
-    const fetchNews = async () => {
-      const data = await getAllNews();
-      const selectedNews = data.find((item) => item.id === id);
-      setNews(selectedNews);
-    };
-
-    fetchNews();
-  }, [id]);
+  const { news, loading } = useNewsDetail(id);
 
   return (
     <Container>
-      {news ? (
+      {loading ? (
+        <p>Carregando...</p>
+      ) : news ? (
         <>
           <Title>{news.title}</Title>
           <PDFContainer>
@@ -53,7 +45,7 @@ const NewsDetail = () => {
           </PDFContainer>
         </>
       ) : (
-        <p>Carregando...</p>
+        <p>Notícia não encontrada.</p>
       )}
     </Container>
   );

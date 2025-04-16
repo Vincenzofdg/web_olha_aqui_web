@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import theme from '../../../theme';
-
+import { useTextForm } from '../../hooks/useTextForm';
 
 const maxDescriptionLength = 500;
 
@@ -28,50 +28,47 @@ const InputText = styled.input`
 `;
 
 const LengthCounter = styled.div`
-  color:${theme.text[1]};
+  color: ${theme.text[1]};
   text-align: right;
   font-size: 14px;
   margin-bottom: 8px;
 `;
 
 function TextForm({ info, setter }) {
-  const [value, setValue] = useState('');
+  const { value, handleChange } = useTextForm();
 
-  const handleChange = e => {
-    const inputValue = e.target.value;
-    setValue(inputValue);
-    setter(prev => ({ ...prev, [info.identifier]: inputValue }));
-  };
-
-  const isDescription = info.identifier === 'description';
-
-  return (
-    <>
-      {isDescription ? (
+  const renderInput = () => {
+    if (info.identifier === 'description') {
+      return (
         <>
           <Input
+            name={info.identifier} 
             placeholder={info.label}
-            value={value}
+            value={value[info.identifier] || ''}
             onChange={handleChange}
             maxLength={maxDescriptionLength}
             $isDescription
           />
           <LengthCounter>
-            {value.length} / {maxDescriptionLength}
+            {value[info.identifier]?.length || 0} / {maxDescriptionLength}
           </LengthCounter>
         </>
-      ) : (
-        <InputText
-          type={info.identifier === 'email' ? 'email' : 'text'}
-          placeholder={info.label}
-          value={value}
-          onChange={handleChange}
-          maxLength={30}
-          autoComplete={info.identifier === 'email' ? 'email' : 'off'}
-        />
-      )}
-    </>
-  );
+      );
+    }
+    return (
+      <InputText
+        name={info.identifier}
+        type={info.identifier === 'email' ? 'email' : 'text'}
+        placeholder={info.label}
+        value={value[info.identifier] || ''}
+        onChange={handleChange}
+        maxLength={30}
+        autoComplete={info.identifier === 'email' ? 'email' : 'off'}
+      />
+    );
+  };
+
+  return renderInput();
 }
 
 export { TextForm };

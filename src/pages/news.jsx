@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import NewsCard from '../components/cards/NewsCard';
 import { useNavigate } from 'react-router-dom';
-import { getAllNews } from '../service/actions/news'; 
+import NewsCard from '../components/cards/NewsCard';
 import str from '../localized/languages/ptBr';
-
+import useNews from '../hooks/useNews';
 
 const Container = styled.div`
   max-width: 900px;
@@ -34,16 +33,7 @@ const Subtitle = styled.h1`
 
 const News = () => {
   const navigate = useNavigate();
-  const [newsList, setNewsList] = useState([]);
-
-  useEffect(() => {
-    const fetchNews = async () => {
-      const data = await getAllNews();
-      setNewsList(data);
-    };
-
-    fetchNews();
-  }, []);
+  const { newsList } = useNews();
 
   return (
     <Container>

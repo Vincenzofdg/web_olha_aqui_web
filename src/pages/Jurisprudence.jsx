@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { getAllLaw } from '../service/actions/laws';
 import theme from '../../theme';
-import { JurisprudenceCard } from '../components/cards/JurisprudenceCard';
 import str from '../localized/languages/ptBr';
+import { JurisprudenceCard } from '../components/cards/JurisprudenceCard';
+import useLaws from '../hooks/useLaws';
 
 const Wrapper = styled.div`
   max-width: 900px;
@@ -31,20 +31,10 @@ const Loading = styled.p`
 `;
 
 function Jurisprudence() {
-  const [laws, setLaws] = useState([]);
-
-  useEffect(() => {
-    async function fetchLaws() {
-      const data = await getAllLaw();
-      setLaws(data);
-    }
-
-    fetchLaws();
-  }, []);
+  const { laws } = useLaws();
 
   return (
     <Wrapper>
-      
       <Title>{str.titlePages.Jurisprudence.Title}</Title>
       <Subtitle>{str.titlePages.Jurisprudence.SubTitle}</Subtitle>
       {laws.length === 0 ? (
@@ -57,6 +47,5 @@ function Jurisprudence() {
     </Wrapper>
   );
 }
-
 
 export default Jurisprudence;

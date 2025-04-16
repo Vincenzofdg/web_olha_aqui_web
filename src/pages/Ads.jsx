@@ -1,21 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
-import str from '../localized/languages/ptBr';
+import React from 'react';
 import styled from 'styled-components';
-import { getAllAnnounces } from '../service/actions/announces';
+import str from '../localized/languages/ptBr';
 import AdCard from '../components/cards/AdCard';
 import FilterAds from '../components/modal/filterAds';
-
-const Header = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 25px 16px 0px 16px;
-  position: sticky;
-  top: 0;
-  background-color: ${({ theme }) => theme.background[0]};
-  z-index: 10;
-`;
+import useAds from '../hooks/useAds';
 
 const PageContainer = styled.div`
   padding: 16px;
@@ -41,38 +29,14 @@ const CardsWrapper = styled.div`
 `;
 
 function Ads({ navigate }) {
-  const [data, setData] = useState([]);
-  const [tags, setTags] = useState([]);
-  const [modalState, setModalState] = useState(false);
-  const [selectedTag, setSelectedTag] = useState(undefined);
-
-  const [searchParams] = useSearchParams();
-  const targetFilter = searchParams.get('target'); 
-
-  useEffect(() => {
-    const fetchAds = async () => {
-      const res = await getAllAnnounces();
-
-      let filteredData = res.data;
-
-      if (targetFilter) {
-        filteredData = filteredData.filter(item =>
-          item.target === targetFilter || item.target === 'all'
-        );
-      }
-
-      if (selectedTag) {
-        filteredData = filteredData.filter(item =>
-          item.tag.toLowerCase().includes(selectedTag.toLowerCase())
-        );
-      }
-
-      setData(filteredData);
-      setTags(res.tags || []);
-    };
-
-    fetchAds();
-  }, [targetFilter, selectedTag]);
+  const {
+    data,
+    tags,
+    modalState,
+    setModalState,
+    selectedTag,
+    setSelectedTag,
+  } = useAds();
 
   return (
     <PageContainer>
@@ -88,7 +52,7 @@ function Ads({ navigate }) {
       />
 
       <CardsWrapper>
-        {data.map(item => (
+        {data.map((item) => (
           <AdCard key={item.id} data={item} nav={navigate} />
         ))}
       </CardsWrapper>

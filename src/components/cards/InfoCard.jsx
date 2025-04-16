@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import PredioIcon from '../../assets/PredioIcon.png';
 import str from '../../localized/languages/ptBr';
-import { useNavigate } from 'react-router-dom';
+import { useWhatsappLink } from '../../hooks/useWhatsappLink';
 
 const Container = styled.div`
   background-color: ${({ theme }) => theme.background[4]};
@@ -77,11 +77,12 @@ const Image = styled.img`
 `;
 
 const PublicAnnounce = () => {
-  const navigate = useNavigate();
-
-  const openBrowser = () => {
-
-    navigate('/contato');
+  const whatsappLink = useWhatsappLink(); 
+  const openWhatsapp = () => {
+    if (whatsappLink) {
+      console.log('Abrindo WhatsApp:', whatsappLink);
+      window.open(whatsappLink, '_blank');
+    }
   };
 
   return (
@@ -89,7 +90,9 @@ const PublicAnnounce = () => {
       <TextContainer>
         <Title>{str.info.title}</Title>
         <Description>{str.info.content}</Description>
-        <Button onClick={openBrowser}>{str.info.btn}</Button>
+        <Button onClick={openWhatsapp} disabled={!whatsappLink}>
+          {str.info.btn}
+        </Button>
       </TextContainer>
       <Image src={PredioIcon} alt="Ícone prédio" />
     </Container>

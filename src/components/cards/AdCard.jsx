@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import str from '../../localized/languages/ptBr';
 import { shortDateDayFormat } from '../../tools/date';
-import { useNavigate } from 'react-router-dom';
+import useAdNavigation from '../../hooks/useAdNavigation';
 
 const Card = styled.div`
   width: 90%;
@@ -45,17 +45,13 @@ const TagsText = styled.span`
   color: ${({ theme }) => theme.text};
 `;
 
-function AdCard({ data, nav }) {
-  const navigate = useNavigate();
-
-  const handleClick = () => {
-    navigate(`/anuncio/${data.id}`, { state: data });
-  };
+function AdCard({ data }) {
+  const { goToAdDetails } = useAdNavigation();
 
   const imageUrl = data.image?.startsWith('http') ? data.image : `${str.website}${data.image}`;
 
   return (
-    <Card onClick={handleClick}>
+    <Card onClick={() => goToAdDetails(data)}>
       <CardImage
         src={imageUrl}
         alt={data?.title || str.alt.anuncio}

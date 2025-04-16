@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import str from '../../localized/languages/ptBr';
+import useNewsNavigation from '../../hooks/useNewsNavigation';
 
 const Card = styled.div`
   background-color: ${({ theme }) => theme.background[4]};
@@ -44,9 +45,11 @@ const Date = styled.small`
   color: ${({ theme }) => theme.text[3]};
 `;
 
-function NewsCard({ data, nav }) {
+function NewsCard({ data }) {
+  const { goToNewsDetails } = useNewsNavigation();
+
   const handleClick = () => {
-    nav(`/news/${data.id}`);
+    goToNewsDetails(data.id);
   };
 
   const imagePath = data.image || '';

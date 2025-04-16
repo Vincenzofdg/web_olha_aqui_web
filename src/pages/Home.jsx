@@ -41,23 +41,24 @@ function Home() {
 
   return (
     <>
-        <PublicCard />
-        <InfoCard />
-        <PublicSector />
-        {highlightedNews.length > 0 && (
-          <>
-            <Title>{str.titlePages.Home.Title}</Title>
-            <SubTitle>{str.titlePages.Home.SubTitle}</SubTitle>
-            <SubTitle>{str.titlePages.Home.Slide}</SubTitle>
-            <NewsCarousel>
-              {highlightedNews.slice(0, 3).map((item, index) => (
-                <div key={index} style={{ maxWidth: '250px' }}>
-                  <NewCard data={item} nav={navigate} />
-                </div>
-              ))}
-            </NewsCarousel>
-          </>
-        )}
+      <PublicCard />
+      <InfoCard />
+      <PublicSector />
+      
+      {highlightedNews.length > 0 && (
+        <>
+          <Title>{str.titlePages.Home.Title}</Title>
+          <SubTitle>{str.titlePages.Home.SubTitle}</SubTitle>
+          <SubTitle>{str.titlePages.Home.Slide}</SubTitle>
+          <NewsCarousel>
+            {highlightedNews.slice(0, 3).map((item, index) => (
+              <div key={index} style={{ maxWidth: '250px' }}>
+                <NewCard data={item} nav={navigate} />
+              </div>
+            ))}
+          </NewsCarousel>
+        </>
+      )}
     </>
   );
 }
