@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import str from '../localized/languages/ptBr';
 import AdCard from '../components/cards/AdCard';
-import FilterAds from '../components/modal/filterAds';
+import FilterAds from '../components/modal/FilterAds';
 import useAds from '../hooks/useAds';
 
 const PageContainer = styled.div`
