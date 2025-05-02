@@ -48,7 +48,7 @@ const Welcome = () => {
   return (
     <Container>
       <Logo src={logo} alt="Logo Olha Aqui! Condomínios" />
-{/*       <EnterButton onClick={() => navigate('/home')}>ENTRAR</EnterButton> */}
+      <EnterButton onClick={() => navigate('/home')}>ENTRAR</EnterButton>
     </Container>
   );
 };
