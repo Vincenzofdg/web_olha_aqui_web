@@ -17,7 +17,7 @@ const Overlay = styled.div`
 
 const Container = styled.div`
   min-height: 100vh;
-  background-color: ${({ theme }) => theme.background[4]};
+  background-color: ${({ theme }) => theme.background[3]};
   padding: 16px;
   overflow-y: auto;
   overflow-x: hidden;

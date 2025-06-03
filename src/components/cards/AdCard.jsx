@@ -45,10 +45,12 @@ const TagsText = styled.span`
   color: ${({ theme }) => theme.text};
 `;
 
-function AdCard({ data }) {
+function AdCard({ data, hideContent = false }) {
   const { goToAdDetails } = useAdNavigation();
 
-  const imageUrl = data.image?.startsWith('http') ? data.image : `${str.website}${data.image}`;
+  const imageUrl = data.image?.startsWith('http')
+    ? data.image
+    : `${str.website}${data.image}`;
 
   return (
     <Card onClick={() => goToAdDetails(data)}>
@@ -57,12 +59,14 @@ function AdCard({ data }) {
         alt={data?.title || str.alt.anuncio}
         onError={(e) => (e.target.style.display = 'none')}
       />
-      <CardContent>
-        <DateText>{shortDateDayFormat(data.createdAt)}</DateText>
-        {data.tag && data.tag.split(';').length > 0 && (
-          <TagsText>#{data.tag.replace(/;/g, ' #')}</TagsText>
-        )}
-      </CardContent>
+      {!hideContent && (
+        <CardContent>
+          <DateText>{shortDateDayFormat(data.createdAt)}</DateText>
+          {data.tag && data.tag.split(';').length > 0 && (
+            <TagsText>#{data.tag.replace(/;/g, ' #')}</TagsText>
+          )}
+        </CardContent>
+      )}
     </Card>
   );
 }
