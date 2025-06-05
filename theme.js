@@ -8,7 +8,7 @@ const theme = {
 background: {
     1: '#0E8991',
     2: '#0d313a',
-    3: '#E0F0FA',
+    3: '#AED0E6',
     4: '#ffffff',
     5: '#1A4568',
     6: '#001f3f',
